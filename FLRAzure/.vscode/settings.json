@@ -1,3 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "None"
+    "appService.defaultWebAppToDeploy": "/subscriptions/016a799e-6742-4077-a99a-d374ad8682ac/resourceGroups/Default/providers/Microsoft.Web/sites/flr",
+    "appService.deploySubpath": "bin/Debug/netcoreapp2.2/publish"
 }

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FLRAzure.Controllers
 {
@@ -23,7 +25,9 @@ namespace FLRAzure.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            string homeDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+            string fileName = Path.Combine(homeDir, "home.html" );
+            return fileName;
         }
 
         // POST api/lasagna

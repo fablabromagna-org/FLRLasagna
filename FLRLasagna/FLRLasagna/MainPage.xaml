@@ -1,39 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage 
+<TabbedPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:FLRLasagna" 
     x:Class="FLRLasagna.MainPage">
+        
+    <ContentPage Title="Lasagne">
+        
+        <StackLayout>
+            <StackLayout.Margin> 
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,40,0,0"></On>
+                </OnPlatform>
+            </StackLayout.Margin>
+
+            <Label x:Name="lblTitolo"
+                Text="FabLab Romagna Lasagna 2018" 
+                HorizontalOptions="Center" 
+                VerticalOptions="CenterAndExpand" 
+                FontSize="Large"   />
+            
+            <Button Text="GO" Clicked="Go_Clicked"></Button>
+            
+            <ListView x:Name="lvDati">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding UrlImmagine}" Text="{Binding Nome}" Detail="{Binding Peso}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Info" Clicked="MaggioriInfo" IsDestructive="false"></MenuItem>
+                                <MenuItem Text="Ordina" Clicked="Ordina" IsDestructive="true"></MenuItem>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>                
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Stampe">
+        <StackLayout>
+            <StackLayout.Margin> 
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,40,0,0"></On>
+                </OnPlatform>
+            </StackLayout.Margin>
+
+            <Label Text="Chi ha stampato?" 
+                HorizontalOptions="Center" 
+                VerticalOptions="CenterAndExpand" 
+                FontSize="Large"   />
+            
+            <Button Text="GO2" Clicked="Go_Clicked2"></Button>
+                        
+            <ListView x:Name="lvStampe" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Nome utente" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="1" Grid.Column="0" Text="Quando" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="2" Grid.Column="0" Text="Formato" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="3" Grid.Column="0" Text="Valore (Euro)" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="4" Grid.Column="0" Text="Inchiostro (ml)" FontAttributes="Bold"></Label>                            
+
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Proprietario}"></Label>                            
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding OraInizioStampa, StringFormat='{0:MMMM d, yyyy h:mm}'}"></Label>                            
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding FormatoStampa}"></Label>                            
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Euro}"></Label>                            
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding InchiostroConsumato}"></Label>                            
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>                
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
     
-    <StackLayout>
-        
-        <StackLayout.Margin> 
-            <OnPlatform x:TypeArguments="Thickness">
-                <On Platform="iOS" Value="0,40,0,0"></On>
-            </OnPlatform>
-        </StackLayout.Margin>
 
-        <!-- Place new controls here -->
-        <Label x:Name="lblTitolo"
-            Text="Welcome to Xamarin.Forms!" 
-            HorizontalOptions="Center" 
-            VerticalOptions="CenterAndExpand" 
-            FontSize="Large"   />
-        
-        <Button Text="GO" Clicked="Go_Clicked"></Button>
-        
-        <ListView x:Name="lvDati">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell ImageSource="{Binding UrlImmagine}" Text="{Binding Nome}" Detail="{Binding Peso}">
-                        <ImageCell.ContextActions>
-                            <MenuItem Text="Info" Clicked="MaggioriInfo" IsDestructive="false"></MenuItem>
-                            <MenuItem Text="Ordina" Clicked="Ordina" IsDestructive="true"></MenuItem>
-                        </ImageCell.ContextActions>
-                    </ImageCell>
-                </DataTemplate>                
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-
-</ContentPage>
+</TabbedPage>

@@ -38,3 +38,6 @@ content-type: application/json
     "Peso": "300gr",
     "UrlImmagine": "https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg"
 }
+###
+GET https://flr.azurewebsites.net/api/stampe HTTP/1.1
+Accept: application/json

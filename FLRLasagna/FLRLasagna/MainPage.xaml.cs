@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using FLRLasagna.Models;
 
 namespace FLRLasagna
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
@@ -47,13 +48,30 @@ namespace FLRLasagna
         {
             DisplayAlert("Compra", "Hai comprato una lasagna...", "OK");
         }
-    }
 
-    public class Lasagna
-    {
-        public string Nome { get; set; }
-        public string Peso { get; set; }
-        public string UrlImmagine { get; set; }
+        async void Go_Clicked2(object sender, System.EventArgs e)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+
+                    string response = await client.GetStringAsync(
+                                 "https://flr.azurewebsites.net/api/stampe");
+
+                    var result = JsonConvert.DeserializeObject
+                                 <IEnumerable<RecordStampa>>(response).ToList();
+
+                    result.RemoveAt(0);
+                    lvStampe.ItemsSource = result;
+                }
+            }
+            catch (Exception err)
+            {
+                await DisplayAlert("Ocio!!", err.Message, "Ok");
+            }
+        }
+
     }
 
 }

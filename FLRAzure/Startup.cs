@@ -44,6 +44,7 @@ namespace FLRAzure
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
