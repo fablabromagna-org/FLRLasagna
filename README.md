@@ -24,3 +24,9 @@ La webapi è <a href="https://flr.azurewebsites.net/api/lasagna">pubblicata qui<
 e supporta i metodi GET, POST, UPDATE e DELETE.
 
 La app mobile invece va compilata con Visual Studio (mac o windows) e si presenta cosi <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Home.png"/>
+
+<img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page1.png"/>
+
+<img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page2.png"/>
+
+<img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page3.png"/>

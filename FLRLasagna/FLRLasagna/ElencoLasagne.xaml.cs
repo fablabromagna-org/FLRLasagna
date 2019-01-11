@@ -13,6 +13,7 @@ namespace FLRLasagna
         public ElencoLasagne()
         {
             InitializeComponent();
+            LoadData();
         }
 
         public async void LoadData()
