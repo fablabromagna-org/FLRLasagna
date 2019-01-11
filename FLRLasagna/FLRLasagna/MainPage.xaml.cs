@@ -15,63 +15,18 @@ namespace FLRLasagna
         public MainPage()
         {
             InitializeComponent();
+            image.Source = ImageSource.FromResource("FLRLasagna.Images.LogoFabLab.png");
         }
 
-        async void Go_Clicked(object sender, System.EventArgs e)
+        async void ApriElencoLasagne(object sender, System.EventArgs e)
         {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-
-                    string response = await client.GetStringAsync(
-                                 "https://flr.azurewebsites.net/api/Lasagna");
-
-                    var result = JsonConvert.DeserializeObject
-                                 <IEnumerable<Lasagna>>(response);
-
-                    lvDati.ItemsSource = result;
-                }
-            }
-            catch (Exception err)
-            {
-                await DisplayAlert("Ocio!!", err.Message, "Ok");
-            }
+            await Navigation.PushAsync(new ElencoLasagne());
         }
 
-        void MaggioriInfo(object sender, System.EventArgs e)
+        async void ApriElencoStampe(object sender, System.EventArgs e)
         {
-            DisplayAlert("Info", "Hai chiesto maggiori info...", "OK");
-        }
-
-        void Ordina(object sender, System.EventArgs e)
-        {
-            DisplayAlert("Compra", "Hai comprato una lasagna...", "OK");
-        }
-
-        async void Go_Clicked2(object sender, System.EventArgs e)
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-
-                    string response = await client.GetStringAsync(
-                                 "https://flr.azurewebsites.net/api/stampe");
-
-                    var result = JsonConvert.DeserializeObject
-                                 <IEnumerable<RecordStampa>>(response).ToList();
-
-                    result.RemoveAt(0);
-                    lvStampe.ItemsSource = result;
-                }
-            }
-            catch (Exception err)
-            {
-                await DisplayAlert("Ocio!!", err.Message, "Ok");
-            }
+            await Navigation.PushAsync(new ElencoStampe());
         }
 
     }
-
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FLRLasagna.ElencoStampe">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Chi ha stampato?" 
+                HorizontalOptions="Center" 
+                VerticalOptions="CenterAndExpand" 
+                FontSize="Large" />
+                                    
+            <ListView x:Name="lvStampe" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Nome utente" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="1" Grid.Column="0" Text="Quando" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="2" Grid.Column="0" Text="Formato" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="3" Grid.Column="0" Text="Valore (Euro)" FontAttributes="Bold"></Label>                            
+                                <Label Grid.Row="4" Grid.Column="0" Text="Inchiostro (ml)" FontAttributes="Bold"></Label>                            
+
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Proprietario}"></Label>                            
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding OraInizioStampa, StringFormat='{0:MMMM d, yyyy h:mm}'}"></Label>                            
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding FormatoStampa}"></Label>                            
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Euro}"></Label>                            
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding InchiostroConsumato}"></Label>                            
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>                
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

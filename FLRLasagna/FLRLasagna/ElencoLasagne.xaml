@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FLRLasagna.ElencoLasagne">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,40,0,0"></On>
+        </OnPlatform>
+    </ContentPage.Padding>    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lblTitolo"
+                Text="Elenco lasagne 2018 FLR" 
+                HorizontalOptions="Center" 
+                VerticalOptions="CenterAndExpand" 
+                FontSize="Large" />
+
+            <ListView x:Name="lvDati">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding UrlImmagine}" Text="{Binding Nome}" Detail="{Binding Peso}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Info" Clicked="MaggioriInfo" IsDestructive="false"></MenuItem>
+                                <MenuItem Text="Ordina" Clicked="Ordina" IsDestructive="true"></MenuItem>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>                
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
