@@ -30,3 +30,7 @@ La app mobile invece va compilata con Visual Studio (mac o windows) e si present
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page2.png"/>
 
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page3.png"/>
+
+<img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page4.png"/>
+
+<img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page5.png"/>

@@ -13,7 +13,14 @@ namespace FLRAzure.Controllers
     public class LasagnaController : ControllerBase
     {
         static List<Lasagna> Lasagne = new List<Lasagna>();
-
+        public LasagnaController(){ 
+            if(Lasagne.Count==0)
+            {
+                Lasagne.Add(new Lasagna{ Nome="Lasagna al ragù", Peso="300gr", UrlImmagine="https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg" });
+                Lasagne.Add(new Lasagna{ Nome="Lasagna ai carciofi", Peso="350gr", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg" });
+            }
+        }
+        
         // GET api/lasagna
         [HttpGet]
         public IEnumerable<Lasagna> Get()
