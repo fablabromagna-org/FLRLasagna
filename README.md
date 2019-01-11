@@ -13,9 +13,14 @@ Volevamo realizzare, a scopo dimostrativo, una webapi RESTFul con le seguenti ca
 * sviluppata con il solo ausilio del .NET Core SDK (command line) 
 * pubblicata su Azure
 Il repo lo  <a href="https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRAzure
-">trovate qui</a>
+">trovi qui</a>
 
 Inoltre volevamo utilizzarla con una app mobile nativa che girasse su iOS e Android quindi abbiamo approfittato per realizzare anche un semplice client Xamarin.Forms che 
 <a href="https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRLasagna">
-trovate qui </a>
+trovi qui </a>
 
+# Descrizione
+La webapi è <a href="https://flr.azurewebsites.net/api/lasagna">pubblicata qui</a>
+e supporta i metodi GET, POST, UPDATE e DELETE.
+
+La app mobile invece va compilata con Visual Studio (mac o windows) e si presenta cosi <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/LogoFabLab.png"/>
