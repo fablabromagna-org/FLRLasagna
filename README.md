@@ -12,7 +12,9 @@ Volevamo realizzare, a scopo dimostrativo, una webapi RESTFul con le seguenti ca
 * utilizzando solo un editor (abbiamo usato VS Code) 
 * sviluppata con il solo ausilio del .NET Core SDK (command line) 
 * pubblicata su Azure
-Il repo lo trovate qui https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRAzure
+Il repo lo trovate qui 
+https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRAzure
 
-Inoltre volevamo utilizzarla con una app mobile nativa che girasse su iOS e Android quindi abbiamo approfittato per realizzare anche un semplice client Xamarin.Forms che trovate qui https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRLasagna
+Inoltre volevamo utilizzarla con una app mobile nativa che girasse su iOS e Android quindi abbiamo approfittato per realizzare anche un semplice client Xamarin.Forms che trovate qui
+https://github.com/fablabromagna-org/FLRLasagna/tree/master/FLRLasagna
 
