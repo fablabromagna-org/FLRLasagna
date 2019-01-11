@@ -3,17 +3,25 @@ namespace FLRLasagna.Models
 {
     public class RecordStampa
     {
-        public string NomeDocumento { get; set; }
+        // Chi
         public string Proprietario { get; set; }
+
+        // Cosa
+        public string NomeDocumento { get; set; }
+        public string FormatoStampa { get; set; }
+        public string TipoCarta { get; set; }
         public string NumeroTotalePagine { get; set; }
+        public string LarghezzaCarta { get; set; }
+        public string LunghezzaCarta { get; set; }
+
+        // Quando
         public DateTime OraInizioStampa { get; set; }
         public DateTime OraFineStampa { get; set; }
         public TimeSpan Durata { get { return OraFineStampa - OraInizioStampa; } }
-        public string FormatoStampa { get; set; }
-        public string TipoCarta { get; set; }
 
+        // Consumi
         public double InchiostroConsumato { get; set; }
-
+        public double CartaConsumata { get; set; }
         public double Euro
         {
             get
@@ -22,15 +30,36 @@ namespace FLRLasagna.Models
                 return Math.Round(d, 2);
             }
         }
-        public string RisultatoStampa { get; set; }
-        public double CartaConsumata { get; set; }
-        public string LarghezzaCarta { get; set; }
-        public string LunghezzaCarta { get; set; }
 
+        // Altro
+        public string RisultatoStampa { get; set; }
+
+
+        //
+        // Utility
+        //
         public override string ToString()
         {
             return $"{NomeDocumento}\nUtente: {Proprietario}\nDalle {OraInizioStampa}, alle {OraFineStampa}\nDurata: {Durata}\nTipo carta: {TipoCarta}\nFormato: {FormatoStampa}\nInchiostro(ml): {InchiostroConsumato}\nCarta(m2): {CartaConsumata}\nEuro: {Euro}";
         }
+
+        public string Utente
+        {
+            get
+            {
+                return $"{Proprietario} ({FormatoStampa}) {Euro}€";
+            }
+        }
+
+        public string Dettagli
+        {
+            get
+            {
+                return $"eseguita {OraInizioStampa} con {InchiostroConsumato}ml di inchiostro";
+            }
+        }
+
+
 
         public static DateTime ToDateTime(string str)
         {

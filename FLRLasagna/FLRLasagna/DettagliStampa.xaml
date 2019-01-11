@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="FLRLasagna.DettagliStampa">
+        
+    <StackLayout>
+        <Label Text="{Binding Utente}" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Red"/>
+        <TableView>
+            <TableRoot>
+                <TableSection Title="Consumi">
+                    <TextCell TextColor="Red" Text="{Binding InchiostroConsumato}" Detail="millilitri totali" />
+                    <TextCell TextColor="Red" Text="{Binding CartaConsumata}" Detail="metri quadri" />
+                    <TextCell TextColor="Red" Text="{Binding Euro}" Detail="Euro" />
+                </TableSection>
+                <TableSection Title="Documento">
+                    <TextCell TextColor="Green" Text="{Binding NomeDocumento}" Detail="Nome file" />
+                    <TextCell TextColor="Green" Text="{Binding FormatoStampa}" Detail="Formato" />
+                    <TextCell TextColor="Green" Text="{Binding TipoCarta}" Detail="Tipo di carta" />
+                    <TextCell TextColor="Green" Text="{Binding NumeroTotalePagine}" Detail="Numero di pagine" />
+                    <TextCell TextColor="Green" Text="{Binding LarghezzaCarta}" Detail="Larghezza carta" />
+                    <TextCell TextColor="Green" Text="{Binding LunghezzaCarta}" Detail="Lunghezza carta" />
+                </TableSection>
+                <TableSection Title="Date">
+                    <TextCell TextColor="Blue" Text="{Binding OraInizioStampa}" Detail="Inizio stampa" />
+                    <TextCell TextColor="Blue" Text="{Binding OraFineStampa}" Detail="Fine stampa" />
+                    <TextCell TextColor="Blue" Text="{Binding Durata}" Detail="Durata" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </StackLayout>
+</ContentPage>

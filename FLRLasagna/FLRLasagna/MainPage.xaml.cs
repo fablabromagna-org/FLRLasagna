@@ -25,7 +25,7 @@ namespace FLRLasagna
 
         async void ApriElencoStampe(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new ElencoStampe());
+            await Navigation.PushAsync(new ElencoStampeCanon());
         }
 
     }
