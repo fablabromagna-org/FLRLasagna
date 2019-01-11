@@ -34,6 +34,8 @@ La app mobile invece va compilata con Visual Studio (mac o windows) e si present
 Nelle settimane successive poi è stata aggiunta una funzionalità che utilizziamo per controllare e valutare i costi delle stampe che effettuiamo nel fablab con il plotter.
 
 In queste schermate sono visibili le modifiche fatte.
+
+
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page4.png"/>
 
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page5.png"/>
