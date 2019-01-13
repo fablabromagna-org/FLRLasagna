@@ -39,3 +39,11 @@ In queste schermate sono visibili le modifiche fatte.
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page4.png"/>
 
 <img src="https://github.com/fablabromagna-org/FLRLasagna/blob/master/FLRLasagna/FLRLasagna/Images/Page5.png"/>
+
+P.S.
+Studiate il linguaggio markdown.
+
+E' importante!!!
+
+https://www.markdownguide.org/cheat-sheet
+
