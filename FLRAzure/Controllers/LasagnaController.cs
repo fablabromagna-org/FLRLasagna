@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using static System.Net.Mime.MediaTypeNames;
+using FLRAzure.Models;
 
 namespace FLRAzure.Controllers
 {
@@ -12,12 +13,19 @@ namespace FLRAzure.Controllers
     [ApiController]
     public class LasagnaController : ControllerBase
     {
-        static List<Lasagna> Lasagne = new List<Lasagna>();
+        Ristorante ristorante {get;set;}
         public LasagnaController(){ 
-            if(Lasagne.Count==0)
+
+            ristorante = new Ristorante();
+            if(ristorante.Menu.Count()==0)
             {
-                Lasagne.Add(new Lasagna{ Nome="Lasagna al ragù", Peso="300gr", UrlImmagine="https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg" });
-                Lasagne.Add(new Lasagna{ Nome="Lasagna ai carciofi", Peso="350gr", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg" });
+                ristorante.Menu.Add(new Menu{ MenuId=1, Nome="Menù del contadino", UrlImmagine="https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg" });
+                ristorante.Menu.Add(new Menu{ MenuId=2, Nome="Menù del cittadino", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg" });
+                
+                ristorante.Lasagne.Add(new Lasagna{LasagnaId=1, Nome="Lasagna alla bolognese", UrlImmagine="https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg", MenuId=1});
+                ristorante.Lasagne.Add(new Lasagna{LasagnaId=2, Nome="Lasagna ai carciofi", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg", MenuId=1});
+                
+                ristorante.SaveChanges();
             }
         }
         
@@ -25,12 +33,20 @@ namespace FLRAzure.Controllers
         [HttpGet]
         public IEnumerable<Lasagna> Get()
         {
-            return Lasagne;
+            return ristorante.Lasagne;
         }
 
         // GET api/lasagna/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Lasagna> Get(int id)
+        {
+            return (from Lasagna l in ristorante.Lasagne
+                    where l.LasagnaId==id
+                    select l)
+                    .First();
+        }
+
+        public string GetHomePage()
         {
             string homeDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
             string fileName = Path.Combine(homeDir, "home.html" );
@@ -41,7 +57,21 @@ namespace FLRAzure.Controllers
         [HttpPost]
         public void Pippo([FromBody] Lasagna value)
         {
-            Lasagne.Add(value);
+            if(value.LasagnaId==0)
+            {
+                int ultimoId = CercaUltimoIdLasagna();
+                value.LasagnaId = ultimoId+1;
+            }
+
+            ristorante.Lasagne.Add(value);
+            ristorante.SaveChanges();
+        }
+
+        private int CercaUltimoIdLasagna()
+        {
+            return (from Lasagna l in ristorante.Lasagne
+                    select l.LasagnaId)
+                    .Max();
         }
 
         // PUT api/values/5
@@ -57,10 +87,4 @@ namespace FLRAzure.Controllers
         }
     }
 
-    public class Lasagna 
-    {
-        public string Nome{get;set;}
-        public string Peso{get;set;}
-        public string UrlImmagine{get;set;}
-    }
 }
