@@ -1,0 +1,43 @@
+###
+GET http://localhost:5000/Meteo
+
+
+### Commenti!!!
+
+POST http://localhost:5000/Meteo HTTP/1.1
+content-type: application/json
+
+{
+    "temperatura": 16,
+    "previsione": "Fresco"
+}
+
+###
+### Get su Azure!!!
+
+GET https://flr.azurewebsites.net/api/Lasagna HTTP/1.1
+Accept: application/json
+
+### POST su Azure!!!
+
+POST https://flr.azurewebsites.net/api/Lasagna HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Lasagna ai carciofi",
+    "Peso": "350gr",
+    "UrlImmagine": "https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg"
+}
+### POST su Azure!!!
+
+POST https://flr.azurewebsites.net/api/Lasagna HTTP/1.1
+content-type: application/json
+
+{
+    "Nome": "Lasagna al ragu",
+    "Peso": "300gr",
+    "UrlImmagine": "https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg"
+}
+###
+GET https://flr.azurewebsites.net/api/stampe HTTP/1.1
+Accept: application/json
