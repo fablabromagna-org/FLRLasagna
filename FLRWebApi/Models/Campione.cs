@@ -7,6 +7,7 @@ namespace FLRWebApi
     public class Campione
     {
         [Key]
+        public int MeteoId{ get; set; }
         public DateTime Data { get; set; }
 
         public int Temperatura { get; set; }

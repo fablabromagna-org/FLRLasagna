@@ -17,6 +17,7 @@ namespace FLRWebApi.Controllers
         };
 
         private readonly ILogger<MeteoController> _logger;
+        Meteo dbMeteo { get; set; }
 
         public MeteoController(ILogger<MeteoController> logger)
         {
@@ -26,16 +27,23 @@ namespace FLRWebApi.Controllers
             if(dbMeteo.Campioni.Count()==0)
             {
                 dbMeteo.Campioni.Add(new Campione{Data=DateTime.Now, Previsione="Afoso", Temperatura=28 });
-                //ristorante.Menu.Add(new Menu{ MenuId=2, Nome="Menù del cittadino", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg" });
-                
-                //ristorante.Lasagne.Add(new Lasagna{LasagnaId=1, Nome="Lasagna alla bolognese", UrlImmagine="https://s.hswstatic.com/gif/recipes/classic-lasagna-recipe-3.jpg", MenuId=1});
-                //ristorante.Lasagne.Add(new Lasagna{LasagnaId=2, Nome="Lasagna ai carciofi", UrlImmagine="https://hips.hearstapps.com/ghk.h-cdn.co/assets/cm/15/11/54fdfb55a7565-butternut-squash-sage-lasagna-de.jpg", MenuId=1});
-                
+                dbMeteo.Campioni.Add(new Campione{Data=DateTime.Now.Subtract(TimeSpan.FromHours(1)), Previsione="Fresco", Temperatura=20 });
                 dbMeteo.SaveChanges();
             }
         }
-        Meteo dbMeteo { get; set; }
-        
+
+        // Torna l'Id più grande
+        private Campione UltimoInserito()
+        {
+            int maxId = (from Campione c in dbMeteo.Campioni
+                         select c.MeteoId).Max();
+
+            var m = (from Campione c in dbMeteo.Campioni
+                     where c.MeteoId == maxId
+                     select c).First();
+
+            return m;
+        }
 
         [HttpGet]
         public IEnumerable<Campione> Get()
@@ -53,10 +61,49 @@ namespace FLRWebApi.Controllers
         }
 
         [HttpPost]
-        public Campione Post( Campione m )
+        public int Post( Campione m )
         {
-            m.Data = DateTime.Now;
-            return m;
+            var rng = new Random();
+            if( m != null ) {
+
+                // La data è sempre quella attuale
+                m.Data = DateTime.Now;
+
+                // Se non mi arrivano previsioni le valorizzo io...
+                if( String.IsNullOrEmpty(m.Previsione) )
+                    m.Previsione = Previsioni[rng.Next(Previsioni.Length)];
+
+                dbMeteo.Campioni.Add( m );
+                dbMeteo.SaveChanges();
+            }
+
+            return dbMeteo.Campioni.Count();
+        }
+
+        [HttpDelete]
+        public int Delete( )
+        {
+            // Cancella tutti i record dal db...
+            dbMeteo.Campioni.RemoveRange( dbMeteo.Campioni );
+            dbMeteo.SaveChanges();
+
+            return dbMeteo.Campioni.Count();
+        }
+
+        [HttpDelete("{id}")]
+        public bool Delete( int id )
+        {
+            var m = (from c in dbMeteo.Campioni
+                    where c.MeteoId == id
+                    select c).First();
+            
+            if( m != null ) {
+                dbMeteo.Campioni.Remove( m );
+                dbMeteo.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
     }
 }

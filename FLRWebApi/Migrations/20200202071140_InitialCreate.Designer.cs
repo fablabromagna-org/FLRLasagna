@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FLRWebApi.Migrations
 {
     [DbContext(typeof(Meteo))]
-    [Migration("20200201183359_InitialCreate")]
+    [Migration("20200202071140_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,10 @@ namespace FLRWebApi.Migrations
 
             modelBuilder.Entity("FLRWebApi.Campione", b =>
                 {
+                    b.Property<int>("MeteoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Data")
                         .HasColumnType("TEXT");
 
@@ -29,7 +33,7 @@ namespace FLRWebApi.Migrations
                     b.Property<int>("Temperatura")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Data");
+                    b.HasKey("MeteoId");
 
                     b.ToTable("Campioni");
                 });

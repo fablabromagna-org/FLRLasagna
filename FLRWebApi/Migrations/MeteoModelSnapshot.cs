@@ -18,6 +18,10 @@ namespace FLRWebApi.Migrations
 
             modelBuilder.Entity("FLRWebApi.Campione", b =>
                 {
+                    b.Property<int>("MeteoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Data")
                         .HasColumnType("TEXT");
 
@@ -27,7 +31,7 @@ namespace FLRWebApi.Migrations
                     b.Property<int>("Temperatura")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Data");
+                    b.HasKey("MeteoId");
 
                     b.ToTable("Campioni");
                 });
